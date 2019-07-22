@@ -4,8 +4,8 @@ Docker Swarm
 
 ## Arquitectura planteada 
 
-             
-1 Master --> |node01| + |node02|
+ ![swarm](https://github.com/kdetony/docker-swarm/blob/master/images/Swarm.png)             
+
      
 
 ## Iniciando el Cluster:
