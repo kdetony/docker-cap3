@@ -80,5 +80,41 @@ donde:
 - update: comando a usar para modificar un servicio
 - publish-add: puertos Host/Contenedor
 
+Ahora, para poder validar, solo ingresamos la *ip del nodo master* en el browser usando el puerto *9090*.
+
+### Ejemplo 3 
+
+Vamos ahora a ver el update de imagenes, supongamos que tenemos la aplicación Grafana con la version 5.0 y queremos desplegarla en nuestro Cluster, bueno lo podemos hacer de la siguiente manera: 
+
+> docker service create --replicas 3 --name monitor **--update-delay 10s** grafana/grafana:5.0.0
+
+donde:
+–replicas: es el número de tareas (task)
+–name: es el nombre del servicio
+–update-delay: es el tiempo que transcurre entre la actualización de cada una de las tareas.
+-grafana/grafana:5.0.0: es la imagen que vamos a utilizar
+
+Validamos con el comando (ejecutado en el nodo manager) : 
+
+> docker service ls  && docker service ps $ID
+
+**Observación**
+
+si deseo ver información adicional del contenedor: 
+
+> docker service inspect --pretty monitor
+
+Vemos que ya tenemos ejecutandose Grafana, pero, si queremos actualizar la imagen?? ... pues es sencillo,solo debemos recurrir al siguiente comando: 
+
+> docker service update --image grafana/grafana:5.0.1 monitor
+
+Validamos con el comando (ejecutado en el nodo manager) : 
+
+> docker service ls  && docker service ps $ID
+
+Y si queremos asignarle un puerto especifico: 
+
+> docker service update --publish-add 5000:3000 monitor
+
 
 
