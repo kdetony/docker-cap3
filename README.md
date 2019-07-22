@@ -1,4 +1,4 @@
-Docker Swarm   ![ballena_roja](https://github.com/kdetony/docker-swarm/blob/master/images/ballena_roja.jpg)
+Docker Swarm            ![ballena_roja](https://github.com/kdetony/docker-swarm/blob/master/images/ballena_roja.jpg)
 ========
 
 
