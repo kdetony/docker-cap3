@@ -1,6 +1,8 @@
-=== Docker Swarm 
+Docker Swarm 
+========
 
 ## Arquitectura planteada 
+
 - - - - --   |      |   |      |
 1 Master --> |node01| + |node02|
 - - - - -    |      |   |      |
