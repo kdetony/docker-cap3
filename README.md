@@ -43,9 +43,38 @@ Debemos tener en claro lo siguiente, antes de empezar a trabajar con Swarm:
 
 ### Ejemplo 1 
 
-En este ejemplo vamos a desplegar una aplicación sencilla, vamos a usar Nginx como imagen base y vamos a iniciarlo con 2 replicas:
+En este ejemplo vamos a desplegar una aplicación sencilla, vamos a usar Nginx como imagen base y vamos a iniciarlo con 3 replicas:
 
-> docker service create --name webnginx --replicas 3 nginx 
+> docker service create **--name webnginx** --replicas 3 nginx 
+
+Donde: 
+
+- name: nombre para el contenedor
+- replicas: cantidad de replicas que deseamos en base al contenedor
+- nginx: nombre de la imagen
+
+Para listar los servicios creados usamos:
+
+> docker service ls 
+
+Y si deseamos saber la cantidad de réplicas y donde están distribuidas:
+
+> docker service ps ID
+
+Vemos que ya contamos con nuestro despliegue de Nginx en nuestros nodos, y como validamos ? pues de la siguiente manera, nos vamos a ubicar en nodo master y ejecutamos: 
+
+> docker inspect $ID | grep IPA 
+
+> curl IP_CONTAINER  
+
+Como podemos observar, tenemos **Nginx** en funcionamiento, pero no es muy accesible que digamos, porque solo "vive" en la red de Docker. 
+
+### Ejemplo 2
+
+Vamos ahora modificar esa limitante, para ello recurrimos al siguiente comando: 
+
+> docker service update --publish-add 9090:80  webnginx
+
 
 
 
