@@ -3,9 +3,9 @@ Docker Swarm
 
 ## Arquitectura planteada 
 
-- - - - --   |      |   |      |
+             
 1 Master --> |node01| + |node02|
-- - - - -    |      |   |      |
+     
 
 ## Iniciando el Cluster 
 
