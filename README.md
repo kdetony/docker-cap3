@@ -31,6 +31,7 @@ En el nodo master, vamos a validar toda nuestra infraestructura, para ello vamos
 
 
 **OBSERVACION**
+
 Debemos tener en claro lo siguiente, antes de empezar a trabajar con Swarm: 
 
 **Task / Tarea**, es la acción que deseamos realizar, un deploy, escalamiento, crear un contenedor, una red, un volumen, etc 
@@ -42,4 +43,9 @@ Debemos tener en claro lo siguiente, antes de empezar a trabajar con Swarm:
 
 ### Ejemplo 1 
 
-En este ejemplo vamos a desplegar una aplicación sencilla
+En este ejemplo vamos a desplegar una aplicación sencilla, vamos a usar Nginx como imagen base y vamos a iniciarlo con 2 replicas:
+
+> docker service create --name webnginx --replicas 3 nginx 
+
+
+
