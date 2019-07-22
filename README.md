@@ -73,8 +73,12 @@ Como podemos observar, tenemos **Nginx** en funcionamiento, pero no es muy acces
 
 Vamos ahora modificar esa limitante, para ello recurrimos al siguiente comando: 
 
-> docker service update --publish-add 9090:80  webnginx
+> docker service **update** **--publish-add 9090:80**  webnginx
 
+donde: 
+
+- update: comando a usar para modificar un servicio
+- publish-add: puertos Host/Contenedor
 
 
 
