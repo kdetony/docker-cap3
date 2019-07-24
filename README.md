@@ -24,6 +24,11 @@ En cada uno de los nodos vamos a ejecutar el comando que obtuvimos:
 
 > docker swarm join --token SWMTKN-1-[code] $IP:2377
 
+**Si olvidamos el Token o deseamos agregar otro worker a futuro:**
+
+> docker swarm join-token -q worker
+
+
 ## Validando la arquitectura: 
 
 En el nodo master, vamos a validar toda nuestra infraestructura, para ello vamos a ejecutar el sgt comando:
