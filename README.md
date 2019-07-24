@@ -128,6 +128,11 @@ TIP
 
 > --constraint=node.role==manager/worker
 
+EJM:
+
+> docker service create --name mydb --replicas 1 **--constraint=node.role==manager** --network my_net --secret source=root_db_password,target=root_db_password --secret source=wp_db_password,target=wp_db_password -e MYSQL_ROOT_PASSWORD_FILE=/run/secrets/root_db_password -e MYSQL_ROOT_PASSWORD_FILE=/run/secrets/root_db_password -e MYSQL_PASSWORD_FILE=/run/secrets/wp_db_password -e MYSQL_USER=wp -e MYSQL_DATABASE=wp mariadb:10.1
+
+
 - Podemos tener tambien una arquitectura "multi-master" para ello es recomendable usar un Balanceador, por ejm. Haproxy, Nginx, Traefik.
 
 - Para temas de monitoreo de contenedores, podemos usar Prometheus. 
