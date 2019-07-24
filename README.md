@@ -83,6 +83,15 @@ donde:
 
 Ahora, para poder validar, solo ingresamos la *ip del nodo master* en el browser usando el puerto *9090*.
 
+Lo que estamos realizando, es decir la acción de publicar una entrada de acceso "externa" hacia el contenedor, se conoce como **routing mesh**
+
+Analizemos este ejemplo:
+
+>**docker service create --name my-web --publish 8080:80 --replicas 2 nginx**
+
+![routing_mesh](https://github.com/kdetony/docker-swarm/blob/master/images/ingress-routing-mesh.png)
+
+
 ### Ejemplo 3 
 
 Vamos ahora a ver el update de imagenes, supongamos que tenemos la aplicación Grafana con la version 5.0 y queremos desplegarla en nuestro Cluster, bueno lo podemos hacer de la siguiente manera: 
