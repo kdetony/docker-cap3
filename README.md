@@ -144,4 +144,6 @@ EJM:
 
 - Podemos tener tambien una arquitectura "multi-master" para ello es recomendable usar un Balanceador, por ejm. Haproxy, Nginx, Traefik.
 
+![loadbalancing](https://github.com/kdetony/docker-swarm/blob/master/images/ingress-lb.png)
+
 - Para temas de monitoreo de contenedores, podemos usar Prometheus. 
