@@ -122,5 +122,12 @@ Y si queremos asignarle un puerto especifico:
 
 > docker service update --publish-add 5000:3000 monitor
 
+TIP
+=====
+- Una buena practica, es que el manager solo gestione los contenedores, para poder lograr esto, usamos lo siguiente:
 
+> --constraint=node.role==manager/worker
 
+- Podemos tener tambien una arquitectura "multi-master" para ello es recomendable usar un Balanceador, por ejm. Haproxy, Nginx, Traefik.
+
+- Para temas de monitoreo de contenedores, podemos usar Prometheus. 
