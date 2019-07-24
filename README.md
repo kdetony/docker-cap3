@@ -4,8 +4,8 @@ Docker Swarm
 
 ## Arquitectura planteada 
 
-             
-1 Master --> |node01| + |node02|
+ ![swarm](https://github.com/kdetony/docker-swarm/blob/master/images/Swarm.png)             
+
      
 
 ## Iniciando el Cluster:
@@ -16,13 +16,18 @@ En el nodo master vamos a ejecutar:
 
 Esto nos va a generar un codigo de la siguiente manera: 
 
-> docker swarm join --token SWMTKN-1-1t45c9j2l2gvalvld0i18z7dvjgv2d1bzw7d3rnlrae19q3d3i-6k452lwtyfdb9hh3afjveykhh $IP:2377
+> docker swarm join --token SWMTKN-1-[code] $IP:2377
 
 ## Agreando los workers al cluster:
 
 En cada uno de los nodos vamos a ejecutar el comando que obtuvimos: 
 
 > docker swarm join --token SWMTKN-1-[code] $IP:2377
+
+**Si olvidamos el Token o deseamos agregar otro worker a futuro:**
+
+> docker swarm join-token -q worker
+
 
 ## Validando la arquitectura: 
 
@@ -126,5 +131,17 @@ Y si queremos asignarle un puerto especifico:
 
 > docker service update --publish-add 5000:3000 monitor
 
+TIP
+=====
+- Una buena practica, es que el manager solo gestione los contenedores, para poder lograr esto, usamos lo siguiente:
+
+> --constraint=node.role==manager/worker
+
+EJM:
+
+> docker service create --name mydb --replicas 1 **--constraint=node.role==manager** --network my_net --secret source=root_db_password,target=root_db_password --secret source=wp_db_password,target=wp_db_password -e MYSQL_ROOT_PASSWORD_FILE=/run/secrets/root_db_password -e MYSQL_ROOT_PASSWORD_FILE=/run/secrets/root_db_password -e MYSQL_PASSWORD_FILE=/run/secrets/wp_db_password -e MYSQL_USER=wp -e MYSQL_DATABASE=wp mariadb:10.1
 
 
+- Podemos tener tambien una arquitectura "multi-master" para ello es recomendable usar un Balanceador, por ejm. Haproxy, Nginx, Traefik.
+
+- Para temas de monitoreo de contenedores, podemos usar Prometheus. 
