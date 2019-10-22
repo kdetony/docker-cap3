@@ -1,3 +1,5 @@
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/kdetony)
+
 Docker Swarm           
 ========
  ![ballena_roja](https://github.com/kdetony/docker-swarm/blob/master/images/ballena_roja.jpg)
